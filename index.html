@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="auteur">
+		<meta name="description" content="description">
+		<meta name="keywords" content="keywords">
+		<title>BDD</title>
+	</head>
+	<body>
+		<form name="formulaire" method="post" action="api/produits/add.php">
+			<fieldset>
+				<input type="text" id="codeBarres" name="codeBarres" placeholder="code-barres">
+				<input type="text" id="marque" name="marque" placeholder="marque" required="true">
+				<input type="text" id="nom" name="nom" placeholder="nom" required="true">
+				<input type="text" id="contenu" name="contenu" placeholder="contenu" required="true">
+				<input type="text" id="imagePath" name="imagePath" placeholder="url image" required="true">
+				<input type="submit" id="button" name="button" value="Ajouter">
+			</fieldset>
+		</form>
+		<!-- <input type="button" name="voir">
+		<div name="Donnees">
+			
+		</div> -->
+	</body>
+</html>
