@@ -2,10 +2,13 @@
 
 class Database
 {
+	private $dotenv;
 	private $dbConn = null;
 
 	public function __construct()
 	{
+		$this->dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+		$this->dotenv->load();
 		$host = $_ENV['DB_HOST'];
 		$port = $_ENV['DB_PORT'];
 		$db = $_ENV['DB_DATABASE'];
@@ -15,7 +18,7 @@ class Database
 		try
 		{
 			$this->dbConn = new PDO(
-				"mysql:host=$host;port=$port;charset=utf8;dbname=$db",
+				"pgsql:host=$host;port=$port;charset=utf8;dbname=$db",
 				$user,
 				$pass,
 				[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION],
@@ -31,7 +34,6 @@ class Database
 	{
 		return $this->dbConn;
 	}
-
 }
 
 ?>

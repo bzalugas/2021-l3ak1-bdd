@@ -25,7 +25,7 @@ class Prix
 
 	public function insert()
 	{
-		$sql = "INSERT INTO Prix VALUES (NULL, :Produit_codeBarres, :prix, :datePrix, :localisationId)";
+		$sql = "INSERT INTO Prix VALUES (DEFAULT, :Produit_codeBarres, :prix, :datePrix, :localisationId)";
 		try{
 			$res = $this->db->prepare($sql);
 			$res->execute([

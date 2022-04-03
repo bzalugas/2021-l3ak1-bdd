@@ -4,12 +4,8 @@ header('Content-Type: application/json/');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-require_once '../../vendor/autoload.php';
 require_once '../../config/Database.php';
 require_once '../../models/Localisation.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
 $db = (new Database())->getConnection();
 $loc = new Localisation($db);

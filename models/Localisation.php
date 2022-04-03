@@ -25,7 +25,7 @@ class Localisation
 
 	public function insert()
 	{
-		$sql = "INSERT INTO Localisation VALUES (NULL, :lat, :long, :nom)";
+		$sql = "INSERT INTO Localisation VALUES (DEFAULT, :lat, :long, :nom)";
 		try {
 			$res = $this->db->prepare($sql);
 			$res->execute([
