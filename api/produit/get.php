@@ -14,5 +14,7 @@ $produit->codeBarres = $_GET['codeBarres'];
 $res = $produit->find();
 if ($res != false)
 	echo json_encode($res);
+else
+	http_response_code(404);
 
 ?>
