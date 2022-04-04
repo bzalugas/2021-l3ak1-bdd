@@ -11,6 +11,8 @@ $produit = new Produit($db);
 if (!isset($_GET['codeBarres']))
 	die('Missing barcode');
 $produit->codeBarres = $_GET['codeBarres'];
-echo json_encode($produit->find());
+$res = $produit->find();
+if ($res != false)
+	echo json_encode($res);
 
 ?>
