@@ -16,7 +16,7 @@ class Produit
 
 	public function setAttributes($infos = [])
 	{
-		$this->codeBarres = $infos['codeBarres'];
+		$this->codeBarres = $this->codeBarres ?? $infos['codeBarres'];
 		$this->marque = $infos['marque'];
 		$this->nom = $infos['nom'];
 		$this->contenu = $infos['contenu'] ?? null;

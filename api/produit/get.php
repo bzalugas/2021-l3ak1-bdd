@@ -17,14 +17,12 @@ if ($res != false)
 	echo json_encode($res);
 else
 {
-	// http_response_code(404);
 	$api = new OpenFoodFacts\Api('food', 'fr');
 	$tmp = $api->getProduct($produit->codeBarres)->getData();
 	$infos = [
-		"codeBarres" => $tmp['_id'],
 		"marque" => $tmp['brands'],
 		"nom" => $tmp['product_name_fr'],
-		"contenu" => " ",
+		"contenu" => $tmp['quantity'] ?? "",
 		"imagePath" => $tmp['image_url']
 	];
 	$produit->setAttributes($infos);
