@@ -15,7 +15,7 @@ if (isset($_POST['codeBarres']))
 else
 	$data = json_decode(file_get_contents("php://input"), true);
 
-if (!$data['codeBarres'] || !$data['prix'] || !$data['datePrix'] || !$data['localisationId'])
+if (!isset($data['produit_codebarres']) || !isset($data['prix']) || !isset($data['datePrix']) || !isset($data['localisationId']))
 	die('Missing argument');
 
 $prix->setAttributes($data);
