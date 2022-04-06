@@ -23,6 +23,18 @@ class Produit
 		$this->imagePath = $infos['imagePath'] ?? null;
 	}
 
+	public function getAttributes()
+	{
+		$attributes = [
+			'codeBarres' => $this->codeBarres,
+			'marque' => $this->marque,
+			'nom' => $this->nom,
+			'contenu' => $this->contenu ?? null,
+			'imagePath' => $this->imagePath ?? null
+		];
+		return $attributes;
+	}
+
 	public function insert()
 	{
 		$sql = "INSERT INTO Produit VALUES (:codeBarres, :marque, :nom, :contenu, :imagePath)";

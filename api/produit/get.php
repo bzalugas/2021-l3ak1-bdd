@@ -19,8 +19,16 @@ else
 {
 	// http_response_code(404);
 	$api = new OpenFoodFacts\Api('food', 'fr');
-	$res = $api->getProduct(strval($produit->codeBarres))->getData();
-	echo json_encode($res);
+	$tmp = $api->getProduct(strval($produit->codeBarres))->getData();
+	$infos = [
+		"codeBarres" => $tmp['_id'],
+		"marque" => $tmp['brands'],
+		"nom" => $tmp['product_name_fr'],
+		"contenu" => " ",
+		"imagePath" => $tmp['image_url']
+	];
+	$produit->setAttributes($infos);
+	echo json_encode($produit->getAttributes());
 }
 	
 
