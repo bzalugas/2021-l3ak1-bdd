@@ -7,7 +7,7 @@ class Prix
 	public $codeBarres;
 	public $prix;
 	public $datePrix;
-	public $localisationId;
+	public $localisation_id;
 
 	public function __construct($db)
 	{
@@ -20,19 +20,19 @@ class Prix
 		$this->codeBarres = $infos['produit_codebarres'];
 		$this->prix = $infos['prix'];
 		$this->datePrix = $infos['dateprix'];
-		$this->localisationId = $infos['localisation_id'];
+		$this->localisation_id = $infos['localisation_id'];
 	}
 
 	public function insert()
 	{
-		$sql = "INSERT INTO Prix VALUES (DEFAULT, :Produit_codeBarres, :prix, :datePrix, :localisationId)";
+		$sql = "INSERT INTO Prix VALUES (DEFAULT, :Produit_codeBarres, :prix, :datePrix, :localisation_id)";
 		try{
 			$res = $this->db->prepare($sql);
 			$res->execute([
 				'Produit_codeBarres' => $this->codeBarres,
 				'prix' => $this->prix,
 				'datePrix' => $this->datePrix,
-				'localisationId' => $this->localisationId
+				'localisation_id' => $this->localisation_id
 			]);
 			return $res->rowCount();
 		} catch (Exception $e){
