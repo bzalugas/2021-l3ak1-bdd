@@ -23,6 +23,7 @@ else
 	{
 		$api = new OpenFoodFacts\Api('beauty', 'fr');
 		$tmp = $api->getProduct($produit->codeBarres)->getData();
+		echo json_encode($tmp);
 	}
 	$infos = [
 		"marque" => $tmp['brands'],
