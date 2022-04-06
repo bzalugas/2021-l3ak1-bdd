@@ -4,6 +4,7 @@ header('Content-Type: application/json');
 
 require_once '../../models/Produit.php';
 require_once '../../config/Database.php';
+require_once '../../vendor/autoload.php';
 
 $db = (new Database())->getConnection();
 $produit = new Produit($db);
