@@ -63,11 +63,14 @@ class Produit
 				'codeBarres' => $this->codeBarres
 			]);
 			$res = $statement->fetch(PDO::FETCH_ASSOC);
-			$this->codeBarres = $res['codebarres'];
-			$this->marque = $res['marque'];
-			$this->nom = $res['nom'];
-			$this->contenu = $res['contenu'];
-			$this->imagePath = $res['imagepath'];
+			if ($res != false)
+			{
+				$this->codeBarres = $res['codebarres'];
+				$this->marque = $res['marque'];
+				$this->nom = $res['nom'];
+				$this->contenu = $res['contenu'];
+				$this->imagePath = $res['imagepath'];
+			}
 			return $res;
 		} catch (Exception $e){
 			die ('Erreur : ' . $e->getMessage());
