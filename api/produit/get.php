@@ -17,14 +17,25 @@ if ($res != false)
 	echo json_encode($res);
 else
 {
-	$api = new OpenFoodFacts\Api('food', 'fr');
-	$tmp = $api->getProduct($produit->codeBarres)->getData();
-	if (empty($tmp))
+	$apiFood = new OpenFoodFacts\Api('food', 'fr');
+	$apiBeauty = new OpenFoodFacts\Api('beauty', 'fr');
+	try
 	{
-		$api = new OpenFoodFacts\Api('beauty', 'fr');
-		$tmp = $api->getProduct($produit->codeBarres)->getData();
-		echo json_encode($tmp);
+		$tmp = $apiFood->getProduct($produit->codeBarres)->getData();
 	}
+	// catch(OpenFoodFacts\Exception\ProductNotFoundException)
+	catch (\ProductNotFoundException $e)
+	{
+		try
+		{
+			$tmp = $apiBeauty->getProduct($produit->codeBarres)->getData();
+		}
+		catch (\ProductNotFoundException $e)
+		{
+			die ("Product not found");
+		}
+	}
+	
 	$infos = [
 		"marque" => $tmp['brands'],
 		"nom" => $tmp['product_name_fr'],
