@@ -16,11 +16,12 @@ class Produit
 
 	public function setAttributes($infos = [])
 	{
-		$this->codeBarres = $this->codeBarres ?? $infos['codeBarres'];
+		if (!isset($this->codeBarres))
+			$this->codeBarres = $infos['codeBarres'];
 		$this->marque = $infos['marque'];
 		$this->nom = $infos['nom'];
-		$this->contenu = $infos['contenu'] ?? null;
-		$this->imagePath = $infos['imagePath'] ?? null;
+		$this->contenu = $infos['contenu'];
+		$this->imagePath = $infos['imagePath'];
 	}
 
 	public function getAttributes()
@@ -44,8 +45,8 @@ class Produit
 				'codeBarres' => $this->codeBarres,
 				'marque' => $this->marque,
 				'nom' => $this->nom,
-				'contenu' => $this->contenu ?? null,
-				'imagePath' => $this->imagePath ?? null
+				'contenu' => $this->contenu,
+				'imagePath' => $this->imagePath
 			]);
 			return $res->rowCount();
 		} catch (Exception $e){
