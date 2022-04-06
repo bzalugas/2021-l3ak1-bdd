@@ -20,7 +20,7 @@ class Prix
 		$this->codeBarres = $infos['produit_codebarres'];
 		$this->prix = $infos['prix'];
 		$this->datePrix = $infos['dateprix'];
-		$this->localisationId = $infos['localisationid'];
+		$this->localisationId = $infos['localisation_id'];
 	}
 
 	public function insert()
