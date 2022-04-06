@@ -24,29 +24,26 @@ else
 		$tmp = $apiFood->getProduct($produit->codeBarres)->getData();
 	}
 	catch(OpenFoodFacts\Exception\ProductNotFoundException)
-	// catch (\ProductNotFoundException $e)
 	{
 		try
 		{
 			$tmp = $apiBeauty->getProduct($produit->codeBarres)->getData();
-			echo json_encode($tmp);
 		}
-		// catch (\ProductNotFoundException $e)
 		catch(OpenFoodFacts\Exception\ProductNotFoundException)
 		{
 			die ("Product not found");
 		}
 	}
 	
-	// $infos = [
-	// 	"marque" => $tmp['brands'],
-	// 	"nom" => $tmp['product_name_fr'],
-	// 	"contenu" => $tmp['quantity'] ?? "",
-	// 	"imagePath" => $tmp['image_url']
-	// ];
-	// $produit->setAttributes($infos);
-	// $produit->insert();
-	// echo json_encode($produit->getAttributes());
+	$infos = [
+		"marque" => $tmp['brands'],
+		"nom" => $tmp['product_name_fr'] ?? $tmp['product_name'],
+		"contenu" => $tmp['quantity'] ?? "",
+		"imagePath" => $tmp['image_url']
+	];
+	$produit->setAttributes($infos);
+	$produit->insert();
+	echo json_encode($produit->getAttributes());
 }
 	
 
