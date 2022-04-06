@@ -23,14 +23,15 @@ else
 	{
 		$tmp = $apiFood->getProduct($produit->codeBarres)->getData();
 	}
-	// catch(OpenFoodFacts\Exception\ProductNotFoundException)
-	catch (\ProductNotFoundException $e)
+	catch(OpenFoodFacts\Exception\ProductNotFoundException)
+	// catch (\ProductNotFoundException $e)
 	{
 		try
 		{
 			$tmp = $apiBeauty->getProduct($produit->codeBarres)->getData();
 		}
-		catch (\ProductNotFoundException $e)
+		// catch (\ProductNotFoundException $e)
+		catch(OpenFoodFacts\Exception\ProductNotFoundException)
 		{
 			die ("Product not found");
 		}
