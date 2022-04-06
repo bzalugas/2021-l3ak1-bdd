@@ -19,6 +19,11 @@ else
 {
 	$api = new OpenFoodFacts\Api('food', 'fr');
 	$tmp = $api->getProduct($produit->codeBarres)->getData();
+	if (!$tmp)
+	{
+		$api = new OpenFoodFacts\Api('beauty', 'fr');
+		$tmp = $api->getProduct($produit->codeBarres)->getData();
+	}
 	$infos = [
 		"marque" => $tmp['brands'],
 		"nom" => $tmp['product_name_fr'],
