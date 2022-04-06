@@ -27,11 +27,11 @@ class Produit
 	public function getAttributes()
 	{
 		$attributes = [
-			'codeBarres' => $this->codeBarres,
+			'codebarres' => $this->codeBarres,
 			'marque' => $this->marque,
 			'nom' => $this->nom,
-			'contenu' => $this->contenu ?? null,
-			'imagePath' => $this->imagePath ?? null
+			'contenu' => $this->contenu,
+			'imagepath' => $this->imagePath
 		];
 		return $attributes;
 	}
