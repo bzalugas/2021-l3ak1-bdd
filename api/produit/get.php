@@ -29,6 +29,7 @@ else
 		try
 		{
 			$tmp = $apiBeauty->getProduct($produit->codeBarres)->getData();
+			echo json_encode($tmp);
 		}
 		// catch (\ProductNotFoundException $e)
 		catch(OpenFoodFacts\Exception\ProductNotFoundException)
@@ -37,15 +38,15 @@ else
 		}
 	}
 	
-	$infos = [
-		"marque" => $tmp['brands'],
-		"nom" => $tmp['product_name_fr'],
-		"contenu" => $tmp['quantity'] ?? "",
-		"imagePath" => $tmp['image_url']
-	];
-	$produit->setAttributes($infos);
-	$produit->insert();
-	echo json_encode($produit->getAttributes());
+	// $infos = [
+	// 	"marque" => $tmp['brands'],
+	// 	"nom" => $tmp['product_name_fr'],
+	// 	"contenu" => $tmp['quantity'] ?? "",
+	// 	"imagePath" => $tmp['image_url']
+	// ];
+	// $produit->setAttributes($infos);
+	// $produit->insert();
+	// echo json_encode($produit->getAttributes());
 }
 	
 
