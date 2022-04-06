@@ -19,7 +19,7 @@ else
 {
 	$api = new OpenFoodFacts\Api('food', 'fr');
 	$tmp = $api->getProduct($produit->codeBarres)->getData();
-	if (!$tmp)
+	if (empty($tmp))
 	{
 		$api = new OpenFoodFacts\Api('beauty', 'fr');
 		$tmp = $api->getProduct($produit->codeBarres)->getData();
