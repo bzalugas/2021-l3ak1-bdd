@@ -18,7 +18,7 @@ else
 {
 	// http_response_code(404);
 	$api = new OpenFoodFacts\Api('food', 'fr');
-	$res = $api->getProduct($produit->codeBarres)->getData();
+	$res = $api->getProduct(strval($produit->codeBarres))->getData();
 	echo json_encode($res);
 }
 	
