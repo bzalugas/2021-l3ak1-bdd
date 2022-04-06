@@ -38,5 +38,26 @@ class Localisation
 			die ("Error in " . __CLASS__ . ' : ' . $e->getMessage());
 		}
 	}
+
+	public function find()
+	{
+		$sql = "SELECT * FROM Localisation WHERE id = :id";
+		try{
+			$statement = $this->db->prepare($sql);
+			$statement->execute([
+				'id' => $this->id
+			]);
+			$res = $statement->fetch(PDO::FETCH_ASSOC);
+			if ($res != false)
+			{
+				$this->lat = $res['latitude'];
+				$this->long = $res['longitude'];
+				$this->nom = $res['nom'];
+			}
+			return $res;
+		} catch (Exception $e){
+			die ('Erreur : ' . $e->getMessage());
+		}
+	}
 }
 ?>
