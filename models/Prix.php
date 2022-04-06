@@ -17,10 +17,10 @@ class Prix
 	public function setAttributes($infos = [])
 	{
 		$this->id = $infos['id'] ?? null;
-		$this->codeBarres = $infos['codeBarres'];
+		$this->codeBarres = $infos['produit_codebarres'];
 		$this->prix = $infos['prix'];
-		$this->datePrix = $infos['datePrix'];
-		$this->localisationId = $infos['localisationId'];
+		$this->datePrix = $infos['dateprix'];
+		$this->localisationId = $infos['localisationid'];
 	}
 
 	public function insert()

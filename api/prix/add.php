@@ -10,12 +10,12 @@ require_once '../../models/Prix.php';
 $db = (new Database())->getConnection();
 $prix = new Prix($db);
 
-if (isset($_POST['codeBarres']))
+if (isset($_POST['produit_codebarres']))
 	$data = $_POST;
 else
 	$data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['produit_codebarres']) || !isset($data['prix']) || !isset($data['datePrix']) || !isset($data['localisationId']))
+if (!isset($data['produit_codebarres']) || !isset($data['prix']) || !isset($data['dateprix']) || !isset($data['localisationid']))
 	die('Missing argument');
 
 $prix->setAttributes($data);
