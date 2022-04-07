@@ -19,6 +19,7 @@ else
 {
 	$apiFood = new OpenFoodFacts\Api('food', 'fr');
 	$apiBeauty = new OpenFoodFacts\Api('beauty', 'fr');
+	$apiPet = new OpenFoodFacts\Api('pet', 'fr');
 	try
 	{
 		$tmp = $apiFood->getProduct($produit->codeBarres)->getData();
@@ -31,7 +32,15 @@ else
 		}
 		catch(OpenFoodFacts\Exception\ProductNotFoundException)
 		{
-			die ("Product not found");
+			try
+			{
+				$tmp = $apiPet->getProduct($produit->codeBarres)->getData();
+			}
+			catch(OpenFoodFacts\Exception\ProductNotFoundException)
+			{
+				http_response_code(404);
+				die("Product not found");
+			}
 		}
 	}
 	
