@@ -36,7 +36,7 @@ else
 	}
 	
 	$infos = [
-		"marque" => $tmp['brands'],
+		"marque" => $tmp['brands'] ?? "Unknown brand",
 		"nom" => $tmp['product_name_fr'] ?? $tmp['product_name'],
 		"contenu" => $tmp['quantity'] ?? "",
 		"imagePath" => $tmp['image_url']
