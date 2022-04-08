@@ -42,7 +42,55 @@ class Prix
 
 	public function find()
 	{
+		$sql = "SELECT * FROM Prix WHERE id = :id";
+		try
+		{
+			$statement = $this->db->prepare($sql);
+			$statement->execute([
+				"id" => $this->id
+			]);
+			$res = $statement->fetch(PDO::FETCH_ASSOC);
+			if ($res != false)
+			{
+				$this->codeBarres = $res['produit_codebarres'];
+				$this->prix = $res['prix'];
+				$this->datePrix = $res['dateprix'];
+				$this->localisation_id = $res['localisation_id'];
+			}
+			return $res;
+		}
+		catch (Exception $e)
+		{
+			die ('Erreur : ' . $e->getMessage());
+		}
+	}
 
+	public function findAllInfos()
+	{
+		$sql = "SELECT produit_codebarres, marque, Produit.nom as produit_nom, contenu, imagepath, prix, dateprix, localisation_id, latitude, longitude, Localisation.nom as localisation_nom
+		FROM Prix 
+		INNER JOIN Produit ON (id = :id AND Prix.produit_codebarres = Produit.codebarres)
+		INNER JOIN Localisation ON (Prix.localisation_id = Localisation.id)";
+		try
+		{
+			$statement = $this->db->prepare($sql);
+			$statement->execute([
+				"id" => $this->id
+			]);
+			$res = $statement->fetch(PDO::FETCH_ASSOC);
+			if ($res != false)
+			{
+				$this->codeBarres = $res['produit_codebarres'];
+				$this->prix = $res['prix'];
+				$this->datePrix = $res['dateprix'];
+				$this->localisation_id = $res['localisation_id'];
+			}
+			return $res;
+		}
+		catch (Exception $e)
+		{
+			die ('Erreur : ' . $e->getMessage());
+		}
 	}
 
 	public function getPrixProduit()
