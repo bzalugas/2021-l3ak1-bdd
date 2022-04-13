@@ -104,7 +104,7 @@ else
 	// {
 	// 	http_response_code(404);
 	// 	die("Error inserting data");
-	// }	
+	// }
 	echo json_encode($produit->getAttributes());
 }
 ?>

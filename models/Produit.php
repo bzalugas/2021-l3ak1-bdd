@@ -55,6 +55,7 @@ class Produit
 				'quantite' => $this->quantite ?? "",
 				'imagePath' => $this->imagePath ?? ""
 			]);
+			echo $res->rowCount();
 			return $res->rowCount();
 		} catch (Exception $e){
 			die ('Erreur : ' . $e->getMessage());
