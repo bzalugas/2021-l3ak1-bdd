@@ -43,7 +43,7 @@ class Produit
 
 	public function insert()
 	{
-		if (!$this->minAttributesSet())
+		if ($this->minAttributesSet() == false)
 			return false;
 		$sql = "INSERT INTO Produit VALUES (:codeBarres, :marque, :nom, :quantite, :imagePath)";
 		try{
