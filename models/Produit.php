@@ -50,12 +50,11 @@ class Produit
 			$res = $this->db->prepare($sql);
 			$res->execute([
 				'codeBarres' => $this->codeBarres,
-				'marque' => $this->marque ?? "",
+				'marque' => $this->marque != null ?? "",
 				'nom' => $this->nom,
-				'quantite' => $this->quantite ?? "",
-				'imagePath' => $this->imagePath ?? ""
+				'quantite' => $this->quantite != null ?? "",
+				'imagePath' => $this->imagePath != null ?? ""
 			]);
-			echo $res->rowCount();
 			return $res->rowCount();
 		} catch (Exception $e){
 			die ('Erreur : ' . $e->getMessage());
