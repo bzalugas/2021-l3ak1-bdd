@@ -100,11 +100,11 @@ else
 		die(json_encode(["exists" => false]));
 	}
 	$produit->setAttributes($infos);
-	if (!$produit->insert())
-	{
-		http_response_code(404);
-		die("Error inserting data");
-	}	
+	$produit->insert();
+	// {
+	// 	http_response_code(404);
+	// 	die("Error inserting data");
+	// }	
 	echo json_encode($produit->getAttributes());
 }
 ?>
