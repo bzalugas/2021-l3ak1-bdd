@@ -14,7 +14,7 @@ class Produit
 		$this->db = $db;
 	}
 
-	public function areNeededAttributesAllSet()
+	public function minAttributesSet()
 	{
 		return ($this->codeBarres != null && $this->marque != null && $this->nom != null);
 	}
@@ -43,7 +43,7 @@ class Produit
 
 	public function insert()
 	{
-		if (!areNeededAttributesAllSet())
+		if (!$this->minAttributesSet())
 			return false;
 		$sql = "INSERT INTO Produit VALUES (:codeBarres, :marque, :nom, :quantite, :imagePath)";
 		try{
