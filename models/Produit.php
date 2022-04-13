@@ -16,7 +16,7 @@ class Produit
 
 	public function minAttributesSet()
 	{
-		return ($this->codeBarres != null && $this->marque != null && $this->nom != null);
+		return ($this->codeBarres != null && $this->nom != null);
 	}
 
 	public function setAttributes($infos = [])
