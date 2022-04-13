@@ -43,17 +43,17 @@ class Produit
 
 	public function insert()
 	{
-		if ($this->minAttributesSet() == false)
+		if (!$this->minAttributesSet())
 			return false;
 		$sql = "INSERT INTO Produit VALUES (:codeBarres, :marque, :nom, :quantite, :imagePath)";
 		try{
 			$res = $this->db->prepare($sql);
 			$res->execute([
 				'codeBarres' => $this->codeBarres,
-				'marque' => $this->marque != null ?? "",
+				'marque' => $this->marque,
 				'nom' => $this->nom,
-				'quantite' => $this->quantite != null ?? "",
-				'imagePath' => $this->imagePath != null ?? ""
+				'quantite' => $this->quantite,
+				'imagePath' => $this->imagePath
 			]);
 			return $res->rowCount();
 		} catch (Exception $e){
