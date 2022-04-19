@@ -10,13 +10,6 @@ class Localisation
 	//longitude
 	public $long;
 	public $nom;
-	//distance entre 2 points : d = R * (pi/2 - asin ( sin x1 * sin x2 + cos ( y1 - y2 ) * cos x1 * cos x2 ))
-	//avec R = 6371km (rayon moyen de la Terre)
-	//x1 latitude en radians du 1er point
-	//x2 latitude en radians du 2eme point
-	//y1 longitude en radians du 1er point
-	//y2 longitude en radians du 2eme point
- 
 
 	public function __construct($db)
 	{
