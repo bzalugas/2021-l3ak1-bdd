@@ -1,6 +1,6 @@
 <?php
 
-define("RAYON", 6371);
+define("RAYON", 6371000);
 class Localisation
 {
 	private $db = null;
