@@ -26,14 +26,14 @@ $loc->long = $_GET['longitude'];
 
 $locs = $loc->findAllByRadius($radius);
 
-$metric = 'm';
-if (isset($_GET['metric']))
-	$metric = $_GET['metric'];
+// $metric = 'm';
+// if (isset($_GET['metric']))
+// 	$metric = $_GET['metric'];
 
-foreach($locs as &$l)
-{
-	$l['distance'] = $loc->distance($l['latitude'], $l['longitude'], $metric);
-}
+// foreach($locs as &$l)
+// {
+// 	$l['distance'] = $loc->distance($l['latitude'], $l['longitude'], $metric);
+// }
 
 echo json_encode($locs);
 
