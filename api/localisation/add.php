@@ -15,7 +15,7 @@ if (isset($_POST['lat']))
 else
 	$data = json_decode(file_get_contents("php://input"), true);
 
-if (!$data['lat'] || !$data['long'] || !$data['nom'])
+if (!isset($data['lat']) || !isset($data['long']) || !isset($data['nom']))
 {
 	http_response_code(404);
 	die('Missing argument');
