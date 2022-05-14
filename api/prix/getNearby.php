@@ -26,7 +26,7 @@ $locList = $loc->findAllByRadius($_GET['radius']);
 $locIds = [];
 foreach ($locList as $l)
 	array_push($locIds, $l['id']);
-if ($locIds.size() > 0)
+if (count($locIds) > 0)
 	$prices = $prix->findPrixProduitAllLoc($locIds);
 
 if ($prices == null)
