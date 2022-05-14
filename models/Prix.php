@@ -145,7 +145,8 @@ class Prix
             $statement = $this->db->prepare($sql);
             $statement->execute([
                 'codebarres' => $this->codeBarres,
-                'lstIds' => implode(",", $lstLocIds)
+                // 'lstIds' => intval(implode(",", $lstLocIds))
+				'lstIds' => json_encode($lstLocIds)
             ]);
             $res = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $res;
