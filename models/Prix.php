@@ -146,7 +146,7 @@ class Prix
             $statement->execute([
                 'codebarres' => $this->codeBarres,
                 // 'lstIds' => intval(implode(",", $lstLocIds))
-				'lstIds' => implode(",", $lstLocIds)
+				'lstIds' => 7,9
             ]);
             $res = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $res;
