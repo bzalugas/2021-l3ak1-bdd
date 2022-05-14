@@ -30,7 +30,7 @@ foreach ($locList as $l)
 	array_push($locIds, $l->id);
 }
 
-$prices = $prix->findPrixProduitAllLoc(locIds);
+$prices = $prix->findPrixProduitAllLoc($locIds);
 
 if ($prices == null)
 	http_response_code(404);
