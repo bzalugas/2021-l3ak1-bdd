@@ -164,7 +164,8 @@ class Prix
 		WHERE dateprix IN (
 			SELECT max(dateprix)
 			FROM prix 
-			WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $lstLocIds).") group by localisation_id)";
+			WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $lstLocIds).")
+			GROUP BY localisation_id)";
 
         try{
             $statement = $this->db->prepare($sql);
@@ -172,6 +173,30 @@ class Prix
                 'codebarres' => $this->codeBarres
             ]);
             $res = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $res;
+        } catch (Exception $e){
+            die ('Erreur : ' . $e->getMessage());
+        }
+	}
+
+	public function findCheapestNearby($locIds = [])
+	{
+		$sql = 
+		"SELECT * 
+		FROM prix
+		WHERE dateprix IN (
+			SELECT max(dateprix)
+			FROM prix
+			WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $locIds).")
+			GROUP BY localisation_id) AND prix = (
+				SELECT min(prix) FROM prix WHERE produit_codebarres= :codebarres);";
+
+		try{
+            $statement = $this->db->prepare($sql);
+            $statement->execute([
+                'codebarres' => $this->codeBarres
+            ]);
+            $res = $statement->fetch(PDO::FETCH_ASSOC);
             return $res;
         } catch (Exception $e){
             die ('Erreur : ' . $e->getMessage());
