@@ -158,10 +158,17 @@ class Prix
 
 	public function findPrixProduitAllLoc($lstLocIds = [])
 	{
-        $sql =
-        "SELECT * FROM Prix
-        WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $lstLocIds).")
-        ORDER BY dateprix DESC";
+        // $sql =
+        // "SELECT * FROM Prix
+        // WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $lstLocIds).")
+        // ORDER BY dateprix DESC";
+		$sql = 
+		"SELECT * 
+		FROM prix 
+		WHERE dateprix IN (
+			SELECT max(dateprix)
+			FROM prix 
+			WHERE produit_codebarres='3760122960848' AND localisation_id IN (".implode(',', $lstLocIds).") group by localisation_id)";
 
         try{
             $statement = $this->db->prepare($sql);
