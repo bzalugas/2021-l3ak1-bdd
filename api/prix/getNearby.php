@@ -20,15 +20,12 @@ if (!isset($_GET['codeBarres']) || !isset($_GET['latitude']) || !isset($_GET['lo
 
 $loc->lat = $_GET['latitude'];
 $loc->long = $_GET['longitude'];
-$locList = $loc->findAllByRadius($_GET['radius']);
-
 $prix->codeBarres = $_GET['codeBarres'];
 
+$locList = $loc->findAllByRadius($_GET['radius']);
 $locIds = [];
 foreach ($locList as $l)
-{
 	array_push($locIds, $l['id']);
-}
 
 $prices = $prix->findPrixProduitAllLoc($locIds);
 
