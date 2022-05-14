@@ -26,8 +26,8 @@ $locList = $loc->findAllByRadius($_GET['radius']);
 $locIds = [];
 foreach ($locList as $l)
 	array_push($locIds, $l['id']);
-
-$prices = $prix->findPrixProduitAllLoc($locIds);
+if ($locIds.size() > 0)
+	$prices = $prix->findPrixProduitAllLoc($locIds);
 
 if ($prices == null)
 	http_response_code(404);
