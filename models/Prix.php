@@ -158,10 +158,6 @@ class Prix
 
 	public function findPrixProduitAllLoc($lstLocIds = [])
 	{
-        // $sql =
-        // "SELECT * FROM Prix
-        // WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $lstLocIds).")
-        // ORDER BY dateprix DESC";
 		$sql = 
 		"SELECT * 
 		FROM prix 
