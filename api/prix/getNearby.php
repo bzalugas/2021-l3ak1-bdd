@@ -27,7 +27,7 @@ $prix->codeBarres = $_GET['codeBarres'];
 $locIds = [];
 foreach ($locList as $l)
 {
-	array_push($locIds, $l->id);
+	array_push($locIds, $l['id']);
 }
 
 $prices = $prix->findPrixProduitAllLoc($locIds);
