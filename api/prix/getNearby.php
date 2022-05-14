@@ -28,6 +28,8 @@ $locIds = [];
 foreach ($locList as $l)
 	array_push($locIds, $l['id']);
 
+echo json_encode(['id'=>$locIds]);
+
 $prices = null;
 if (count($locIds) > 0)
 	$prices = $prix->findPrixProduitAllLoc($locIds);
@@ -35,6 +37,6 @@ if (count($locIds) > 0)
 if ($prices == null)
 	http_response_code(404);
 
-echo (json_encode($prices));
+echo (json_encode(['prix'=>$prices]));
 
 ?>
