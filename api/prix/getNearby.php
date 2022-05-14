@@ -23,17 +23,18 @@ $loc->long = $_GET['longitude'];
 $prix->codeBarres = $_GET['codeBarres'];
 
 $locList = $loc->findAllByRadius($_GET['radius']);
+echo json_encode($locList);
 $locIds = [];
 foreach ($locList as $l)
 	array_push($locIds, $l['id']);
+echo json_encode($locIds);
+// $prices = null;
+// if (count($locIds) > 0)
+// 	$prices = $prix->findPrixProduitAllLoc($locIds);
 
-$prices = null;
-if (count($locIds) > 0)
-	$prices = $prix->findPrixProduitAllLoc($locIds);
+// if ($prices == null)
+// 	http_response_code(404);
 
-if ($prices == null)
-	http_response_code(404);
-
-echo (json_encode($prices));
+// echo (json_encode($prices));
 
 ?>
