@@ -67,7 +67,7 @@ class Prix
 
 	public function findCheapestForBarcode()
 	{
-		$sql = "SELECT * FROM Prix WHERE produit_codebarres = :codeBarres ORDER BY prix DESC LIMIT 1";
+		$sql = "SELECT * FROM Prix WHERE produit_codebarres = :codeBarres ORDER BY prix ASC LIMIT 1";
 		try{
 			$statement = $this->db->prepare($sql);
 			$statement->execute([
