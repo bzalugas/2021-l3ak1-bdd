@@ -138,7 +138,7 @@ class Prix
 	{
         $sql =
         "SELECT * FROM Prix
-        WHERE produit_codebarres = :codebarres AND localisation_id IN :lstIds
+        WHERE produit_codebarres = :codebarres AND localisation_id IN (:lstIds)
         ORDER BY dateprix DESC LIMIT 1";
 
         try{
@@ -146,7 +146,7 @@ class Prix
             $statement->execute([
                 'codebarres' => $this->codeBarres,
                 // 'lstIds' => intval(implode(",", $lstLocIds))
-				'lstIds' => "(7,9)"
+				'lstIds' => "7,9"
             ]);
             $res = $statement->fetchAll(PDO::FETCH_ASSOC);
             return $res;
