@@ -161,7 +161,7 @@ class Prix
         $sql =
         "SELECT * FROM Prix
         WHERE produit_codebarres = :codebarres AND localisation_id IN (".implode(',', $lstLocIds).")
-        ORDER BY dateprix DESC LIMIT 1";
+        ORDER BY dateprix DESC";
 
         try{
             $statement = $this->db->prepare($sql);
