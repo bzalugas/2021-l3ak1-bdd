@@ -4,13 +4,11 @@ header('Content-Type: application/json');
 
 require_once '../../models/Produit.php';
 require_once '../../models/Prix.php';
-require_once '../../models/Localisation.php';
 require_once '../../config/Database.php';
 
 $db = (new Database())->getConnection();
 
 $produit = new Produit($db);
-$loc = new Localisation($db);
 $prix = new Prix($db);
 
 if (!isset($_GET['codeBarres']) || !isset($_GET['localisation_id']))
@@ -20,7 +18,6 @@ if (!isset($_GET['codeBarres']) || !isset($_GET['localisation_id']))
 }
 	
 $produit->codeBarres = $_GET['codeBarres'];
-$loc->id = $_GET['localisation_id'];
 
 $infos = $produit->find();
 if ($infos == false)
@@ -30,6 +27,7 @@ if ($infos == false)
 }
 
 $prix->codeBarres = $produit->codeBarres;
+$prix->localisation_id = $_GET['localisation_id'];
 $allPrices = $prix->findAllPrixLoc();
 // $res = [];
 // foreach ($allPrices as $singlePrice)
